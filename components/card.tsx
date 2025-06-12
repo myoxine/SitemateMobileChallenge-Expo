@@ -1,9 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
-const Card = ({ title, content }: { title: string, content: string }) => {
+const Card = ({ title, content, urlToImage }: { title: string, content: string, urlToImage: string }) => {
     return (
         <View style={styles.card}>
+            {urlToImage && (
+                <Image source={{ uri: urlToImage }} style={styles.thumbnail} />
+            )}
             <Text style={styles.title}>{title}</Text>
             <View style={styles.content}><Text>{content}</Text></View>
         </View>
@@ -29,6 +32,13 @@ const styles = StyleSheet.create({
     },
     content: {
         // Add content specific styles here
+    },
+    thumbnail: {
+        width: 90,
+        height: 90,
+        borderRadius: 8,
+        marginRight: 12,
+        marginBottom: 12,
     },
 });
 
